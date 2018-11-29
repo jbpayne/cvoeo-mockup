@@ -12,8 +12,8 @@ export default class App extends React.Component {
   constructor(props) {
     super(props);
     this.icons = {
-      'open': 'caret-down',
-      'close': 'caret-up'
+      'open': 'angle-down',
+      'close': 'angle-up'
     };
 
     this.state = { expanded: false };
@@ -31,138 +31,184 @@ export default class App extends React.Component {
       icon = this.icons['close'];
     }
     return (
-      <ScrollView style={styles.main}>
-        <View scrollEnabled={false} style={styles.container}>
+      <View scrollEnabled={false} style={styles.container}>
+        <View>
           <Text style={styles.title}>Money On My Mind</Text>
         </View>
-        <View style={styles.padding}>
-          <View style={styles.upcomingBox}>
-            <Text style={styles.blockTitle}>Coming Up:</Text>
-            <View style={styles.row}>
-              <View style={styles.smallerBlock}>
-                <Text style={styles.date}> </Text>
-              </View>
-              <View style={styles.bigBlock}>
-                <Text style={styles.subTitle}>Meeting with Forrest</Text>
-                <Text style={styles.subText}>Wednesday 12/19/18 12:00pm</Text>
-                <Text style={styles.subText}>CVOEO</Text>
-              </View>
-              <View style={styles.smallBlock}>
-                <Text style={styles.circle}>2</Text>
-                <Text style={styles.days}>Days</Text>
-              </View>
-            </View>
-            <View style={styles.moreButton}>
+        <ScrollView style={styles.main}>
+          <View style={styles.padding}>
+            <View style={styles.upcomingBox}>
+              <Text style={[styles.blockTitle, styles.upcomingTitle]}>COMING UP:</Text>
               <View style={styles.row}>
-                <Text style={styles.moreButton}>MORE</Text>
-                <TouchableHighlight
-                  style={styles.button}
-                  onPress={this.toggle.bind(this)}
-                  underlayColor="#fff">
-                  <Icon
-                    style={styles.FAIcon}
-                    name={icon}
-                  />
-                </TouchableHighlight>
-              </View>
-            </View>
-
-            {
-              this.state.expanded && (<View style={styles.row}>
-                {this.props.children}
                 <View style={styles.smallerBlock}>
                   <Text style={styles.date}> </Text>
                 </View>
                 <View style={styles.bigBlock}>
-                  <Text style={styles.subTitle}>Meeting with Forrest</Text>
-                  <Text style={styles.subText}>Wednesday 12/26/18 2:00pm</Text>
-                  <Text style={styles.subText}>CVOEO</Text>
+                  <Text style={styles.subTitle}>Meeting with Coach</Text>
+                  <Text style={styles.subText}>Wed 12/19/18 12:00pm</Text>
+                  <Text style={styles.subText}>CVOEO Office</Text>
                 </View>
                 <View style={styles.smallBlock}>
-                  <Text style={styles.circle}>9</Text>
-                  <Text style={styles.days}>Days</Text>
+                  <Text style={styles.circle}>2</Text>
+                  <Text style={styles.days}>days</Text>
                 </View>
-              </View>)
-            }
+              </View>
+              <View style={styles.moreButton}>
+                <View style={styles.row}>
+                  <Text style={styles.moreButton}></Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={this.toggle.bind(this)}
+                    underlayColor="#fff">
+                    <Icon
+                      style={styles.FAIcon}
+                      name={icon}
+                    />
+                  </TouchableHighlight>
+                </View>
+              </View>
 
-          </View>
-        </View>
-        <View style={styles.padding}>
-          <View style={styles.progressBox}>
-            <Text style={styles.blockTitle}>Progress:</Text>
-
-            {/* <Surface width={250} height={250}>
-            <Group x={250 / 2} y={250 / 2}>
-
-                {(d3.pie().value(d => d.price)(userPurchases)).map(section => ([
-  {
-    itemName: 'Mountain Dew',
-    price: 3
-  }])
-                  <Shape
-                    key={section.index}
-                    d={path(section)}
-                    stroke="#000"
-                    fill={`rgb(0,0,255)`}
-                    strokeWidth={1}
-                  />
-                ))
+              {
+                this.state.expanded && (<View style={styles.row}>
+                  {this.props.children}
+                  <View style={styles.smallerBlock}>
+                    <Text style={styles.date}> </Text>
+                  </View>
+                  <View style={styles.bigBlock}>
+                    <Text style={styles.subTitle}>Meeting with Coach</Text>
+                    <Text style={styles.subText}>Wed 12/26/18 2:00pm</Text>
+                    <Text style={styles.subText}>CVOEO Office</Text>
+                    <Text style={styles.subText}></Text>
+                  </View>
+                  <View style={styles.smallBlock}>
+                    <Text style={styles.circle}>9</Text>
+                    <Text style={styles.days}>days</Text>
+                  </View>
+                </View>)
               }
-            </Group>
-          </Surface> */}
 
-            <LinearGradient
-              colors={['#d4af37', '#ffdf00', '#cfb53b']}
-              style={{ alignItems: 'center', borderRadius: 90 }}>
-              <Text style={styles.bigCircle}>$150</Text>
-            </LinearGradient>
-            <Text style={styles.moreButton}> </Text>
+            </View>
           </View>
-        </View>
-        <View style={styles.padding}>
-          <View style={styles.goalsBox}>
-            <Text style={styles.blockTitle}>Current Goals:</Text>
-            <View style={styles.row}>
-              <View style={styles.smallerBlock}>
-                <Text style={styles.date}> </Text>
+          <View style={styles.padding}>
+            <View style={styles.progressBox}>
+              <View style={styles.spaceRow}>
+                <Text style={[styles.bigTitle, styles.bigLetters]}>$150</Text>
+                <Text style={styles.bigBlock}></Text>
+                <Text style={styles.bigTitle}>Well Done!</Text>
               </View>
-              <View style={styles.biggerBlock}>
-                <Text style={styles.subText}>Attend "Spend Smart 2/2" Workshop</Text>
-              </View>
-            </View>
-            <View style={styles.moreButton}>
-              <View style={styles.row}>
-                <Text style={styles.moreButton}>MORE</Text>
-                <TouchableHighlight
-                  style={styles.button}
-                  onPress={this.toggle.bind(this)}
-                  underlayColor="#fff">
-                  <Icon
-                    style={styles.FAIcon}
-                    name={icon}
-                  />
-                </TouchableHighlight>
-              </View>
-            </View>
 
-            {
-              this.state.expanded && (<View style={styles.row}>
-                {this.props.children}
+              {/* <LinearGradient
+                colors={['#d4af37', '#ffdf00', '#cfb53b']}
+                style={{ alignItems: 'center', borderRadius: 90 }}>
+                <Text style={styles.bigCircle}>$150</Text>
+              </LinearGradient> */}
+
+              <View style={styles.row}>
+                <View style={styles.smallerBlock}>
+                  <Text style={styles.money}>     $0</Text>
+                </View>
+                <View style={styles.bottomLine}>
+                  <View style={styles.semiCircle}>
+                    <View style={styles.diagonalLine}></View>
+                  </View>
+                </View>
+                <View style={styles.smallerBlock}>
+                  <Text style={styles.money}>$500    </Text>
+                </View>
+                <Text style={styles.moreButton}> </Text>
+              </View>
+            </View>
+          </View>
+
+          <View style={styles.padding}>
+            <View style={styles.goalsBox}>
+              <Text style={[styles.blockTitle, styles.goalsTitle]}>CURRENT GOALS:</Text>
+              <View style={styles.row}>
                 <View style={styles.smallerBlock}>
                   <Text style={styles.date}> </Text>
                 </View>
                 <View style={styles.biggerBlock}>
-                  <Text style={styles.subText}>Pay down past due bills</Text>
-                  <Text style={styles.subText}> </Text>
-                  <Text style={styles.subText}>Attend "Keys To Credit" workshop</Text>
-                  <Text style={styles.subText}> </Text>
+                  <Text style={styles.subTitle}>Attend "Spend Smart 2/2" Workshop</Text>
+                  <Text style={styles.subText}>some important detail</Text>
                 </View>
-              </View>)
-            }
+              </View>
+              <View style={styles.moreButton}>
+                <View style={styles.row}>
+                  <Text style={styles.moreButton}></Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={this.toggle.bind(this)}
+                    underlayColor="#fff">
+                    <Icon
+                      style={styles.FAIcon}
+                      name={icon}
+                    />
+                  </TouchableHighlight>
+                </View>
+              </View>
 
+              {
+                this.state.expanded && (<View style={styles.row}>
+                  {this.props.children}
+                  <View style={styles.smallerBlock}>
+                    <Text style={styles.date}> </Text>
+                  </View>
+                  <View style={styles.biggerBlock}>
+                    <Text style={styles.subTitle}>Pay down past due bills</Text>
+                    <Text style={styles.subText}> </Text>
+                    <Text style={styles.subTitle}>Attend "Keys To Credit" workshop</Text>
+                    <Text style={styles.subText}> </Text>
+                  </View>
+                </View>)
+              }
+
+            </View>
           </View>
-        </View>
-      </ScrollView>);
+          <View style={styles.padding}>
+            <View style={styles.completedBox}>
+              <Text style={[styles.blockTitle, styles.completedTitle]}>COMPLETED:</Text>
+              <View style={styles.row}>
+                <View style={styles.smallerBlock}>
+                  <Text style={styles.date}> </Text>
+                </View>
+                <View style={styles.biggerBlock}>
+                  <Text style={styles.subTitle}>Open matched savings account</Text>
+                  <Text style={styles.subText}>some important detail</Text>
+                </View>
+              </View>
+              <View style={styles.moreButton}>
+                <View style={styles.row}>
+                  <Text style={styles.moreButton}></Text>
+                  <TouchableHighlight
+                    style={styles.button}
+                    onPress={this.toggle.bind(this)}
+                    underlayColor="#fff">
+                    <Icon
+                      style={styles.FAIcon}
+                      name={icon}
+                    />
+                  </TouchableHighlight>
+                </View>
+              </View>
+
+              {
+                this.state.expanded && (<View style={styles.row}>
+                  {this.props.children}
+                  <View style={styles.smallerBlock}>
+                    <Text style={styles.date}> </Text>
+                  </View>
+                  <View style={styles.biggerBlock}>
+                    <Text style={styles.subTitle}>Attended first workshop</Text>
+                    <Text style={styles.subText}> </Text>
+                  </View>
+                </View>)
+              }
+
+            </View>
+          </View>
+        </ScrollView>
+      </View>
+    );
   }
 }
 
@@ -173,8 +219,18 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: 'transparent',
-    alignItems: 'center',
-    top: 0,
+    alignSelf: 'stretch',
+  },
+  title: {
+    backgroundColor: '#467',
+    color: '#fff',
+    fontSize: 25,
+    fontWeight: 'bold',
+    paddingTop: 35,
+    paddingBottom: 15,
+    alignSelf: 'stretch',
+    textAlign: 'center',
+    fontFamily: 'System',
   },
   padding: {
     padding: 10,
@@ -182,21 +238,27 @@ const styles = StyleSheet.create({
   },
   upcomingBox: {
     flex: 1,
-    backgroundColor: '#fff8c7',
+    backgroundColor: '#fffae1',
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: 2,
   },
   progressBox: {
     flex: 1,
     backgroundColor: '#eee',
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: 2,
   },
   goalsBox: {
     flex: 1,
-    backgroundColor: '#edf9f3',
+    backgroundColor: '#d4e5de',
     alignItems: 'center',
-    borderRadius: 6,
+    borderRadius: 2,
+  },
+  completedBox: {
+    flex: 1,
+    backgroundColor: '#b1e1f5',
+    alignItems: 'center',
+    borderRadius: 2,
   },
   row: {
     display: 'flex',
@@ -212,73 +274,103 @@ const styles = StyleSheet.create({
   },
   biggerBlock: {
     backgroundColor: 'transparent',
-    flex: 7,
+    flex: 9,
     alignItems: 'center',
     padding: 2,
   },
   smallBlock: {
     backgroundColor: 'transparent',
-    flex: 2,
-    alignItems: 'center',
+    flexDirection: 'row',
+    flex: 3,
+    alignItems: 'flex-start',
   },
   smallerBlock: {
     backgroundColor: 'transparent',
     flex: 1,
     alignItems: 'center',
   },
-  title: {
-    backgroundColor: '#689',
-    color: '#fff',
-    fontSize: 25,
-    fontWeight: 'bold',
-    paddingTop: 35,
-    paddingBottom: 15,
-    alignSelf: 'stretch',
-    textAlign: 'center',
-  },
   blockTitle: {
     alignItems: 'flex-start',
-    color: '#558',
+    color: 'rgba(2,2,2,0.34)',
     fontSize: 16,
     fontWeight: 'bold',
-    paddingTop: 12,
-    paddingLeft: 10,
-    paddingBottom: 9,
+    paddingTop: 6,
+    paddingLeft: 7,
+    paddingBottom: 5,
     alignSelf: 'stretch',
     textAlign: 'left',
-    // borderTopWidth: 10,
-    // borderTopColor: '#000',
+    fontFamily: 'System',
+  },
+  upcomingTitle: {
+    color: '#a8b144',
+  },
+  goalsTitle: {
+    color: '#839f8f',
+  },
+  completedTitle: {
+    color: '#446479',
   },
   subTitle: {
     alignItems: 'center',
-    color: '#5b5',
+    color: '#d51',
     fontSize: 17,
     fontWeight: 'bold',
-    paddingTop: 5,
-    paddingBottom: 3,
+    paddingTop: 1,
     alignSelf: 'stretch',
     textAlign: 'left',
+    fontFamily: 'System',
   },
   subText: {
     backgroundColor: 'transparent',
     alignItems: 'center',
     color: '#555',
     fontSize: 16,
-    paddingBottom: 3,
     alignSelf: 'stretch',
     textAlign: 'left',
+    fontFamily: 'System',
   },
   days: {
-    alignItems: 'center',
-    color: '#a55',
-    fontSize: 16,
-    paddingBottom: 3,
+    alignSelf: 'flex-end',
+    color: '#aaa',
+    fontSize: 14,
+    paddingBottom: 1,
+    paddingLeft: 2,
     textAlign: 'center',
+    fontFamily: 'System',
+  },
+  spaceRow: {
+    display: 'flex',
+    flexDirection: 'row',
+    backgroundColor: 'transparent',
+    alignItems: 'center',
+    justifyContent: 'space-around',
+  },
+  bigTitle: {
+    color: '#356',
+    fontSize: 20,
+    fontWeight: 'bold',
+    paddingLeft: 24,
+    paddingRight: 24,
+    paddingTop: 7,
+    fontFamily: 'System',
+  },
+  bigLetters: {
+    fontSize: 40,
   },
   FAIcon: {
     alignItems: 'flex-end',
-    color: '#9cc',
-    fontSize: 28,
+    color: 'rgba(2,2,2,0.3)',
+    fontSize: 20,
+    fontWeight: 'bold',
+    backgroundColor: 'rgba(50,50,50,0.2)',
+    width: 28,
+    height: 28,
+    borderTopLeftRadius: 14,
+    // borderBottomLeftRadius: 7,
+    // borderTopRightRadius: 7,
+    textAlign: 'center',
+    paddingTop: 5,
+    paddingLeft: 2,
   },
   button: {
     backgroundColor: 'transparent',
@@ -288,20 +380,20 @@ const styles = StyleSheet.create({
     alignItems: 'flex-end',
     color: '#9cc',
     fontSize: 16,
-    paddingBottom: 7,
-    paddingTop: 10,
-    paddingRight: 14,
+    paddingTop: 3,
     alignSelf: 'stretch',
     textAlign: 'right',
   },
   circle: {
-    backgroundColor: '#a55',
-    color: '#fff',
-    fontSize: 20,
-    width: 28,
-    height: 28,
-    borderRadius: 14,
+    backgroundColor: '#ffa07a',
+    color: '#fff8c7',
+    fontSize: 22,
+    width: 40,
+    height: 40,
+    borderRadius: 20,
     textAlign: 'center',
+    paddingTop: 4,
+    fontFamily: 'System',
   },
   bigCircle: {
     backgroundColor: 'transparent',
@@ -317,5 +409,49 @@ const styles = StyleSheet.create({
     borderColor: '#d4af37',
     borderRadius: 90,
     textAlign: 'center',
+  },
+  money: {
+    flex: 1,
+    position: 'absolute',
+    bottom: -50,
+    color: '#446479',
+    fontWeight: 'bold',
+    },
+  diagonalLine: {
+    position: 'absolute',
+    bottom: -46,
+    left: -8,
+    backgroundColor: 'rgba(215,210,160, 0.0)',
+    width: 80,
+    height: 130,
+    borderRightWidth: 2,
+    borderColor: '#000',
+    transform: [{ rotate: '-45deg' }],
+  },
+  bottomLine: {
+    display: 'flex',
+    alignItems: 'center',
+    borderBottomWidth: 2,
+    borderColor: 'rgba(0,0,0,0.0)',
+    width: 260,
+    paddingBottom: 10,
+  },
+  semiCircle: {
+    flex: 10,
+    backgroundColor: 'transparent',
+    color: '#d4af37',
+    fontSize: 60,
+    textShadowColor: 'rgba(8, 6, 3, 0.75)',
+    textShadowOffset: { width: -1, height: -1 },
+    textShadowRadius: 10,
+    width: 220,
+    height: 110,
+    borderWidth: 7,
+    borderBottomWidth: 0,
+    borderColor: '#ffa07a',
+    borderTopLeftRadius: 110,
+    borderTopRightRadius: 110,
+    textAlign: 'center',
+    alignItems: 'center',
   },
 });
