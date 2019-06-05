@@ -1,10 +1,8 @@
 import { ScrollView } from 'react-native-gesture-handler';
 import { LinearGradient } from 'expo';
 import React, { Component } from 'react';
-import { StyleSheet, Text, View, TouchableHighlight, Animated, ART }
+import { StyleSheet, Text, View, TouchableHighlight, Animated }
   from 'react-native';
-import * as d3 from 'd3';
-const { Surface, Group, Shape } = ART;
 import Icon from 'react-native-vector-icons/FontAwesome';
 
 export default class App extends React.Component {
@@ -96,24 +94,24 @@ export default class App extends React.Component {
                 <Text style={styles.bigBlock}></Text>
                 <Text style={styles.bigTitle}>Well Done!</Text>
               </View>
-
-              {/* <LinearGradient
-                colors={['#d4af37', '#ffdf00', '#cfb53b']}
-                style={{ alignItems: 'center', borderRadius: 90 }}>
-                <Text style={styles.bigCircle}>$150</Text>
-              </LinearGradient> */}
-
               <View style={styles.row}>
                 <View style={styles.smallerBlock}>
-                  <Text style={styles.money}>     $0</Text>
+                <Text style={styles.bigBlock}></Text>
+                  <Text style={[styles.money, styles.end]}>$0</Text>
                 </View>
                 <View style={styles.bottomLine}>
+                <View style={styles.cone}></View>
                   <View style={styles.semiCircle}>
-                    <View style={styles.diagonalLine}></View>
+                  <View style={styles.diagonalLine}></View>
+                  <Icon
+                      style={styles.arrow}
+                      name={icon}
+                    />
                   </View>
                 </View>
                 <View style={styles.smallerBlock}>
-                  <Text style={styles.money}>$500    </Text>
+                <Text style={styles.bigBlock}></Text>
+                  <Text style={[styles.money, styles.start]}>$500</Text>
                 </View>
                 <Text style={styles.moreButton}> </Text>
               </View>
@@ -288,6 +286,8 @@ const styles = StyleSheet.create({
     backgroundColor: 'transparent',
     flex: 1,
     alignItems: 'center',
+    display: 'flex',
+    flexDirection: 'column',
   },
   blockTitle: {
     alignItems: 'flex-start',
@@ -366,8 +366,6 @@ const styles = StyleSheet.create({
     width: 28,
     height: 28,
     borderTopLeftRadius: 14,
-    // borderBottomLeftRadius: 7,
-    // borderTopRightRadius: 7,
     textAlign: 'center',
     paddingTop: 5,
     paddingLeft: 2,
@@ -378,11 +376,8 @@ const styles = StyleSheet.create({
   moreButton: {
     backgroundColor: 'transparent',
     alignItems: 'flex-end',
-    color: '#9cc',
-    fontSize: 16,
     paddingTop: 3,
     alignSelf: 'stretch',
-    textAlign: 'right',
   },
   circle: {
     backgroundColor: '#ffa07a',
@@ -412,14 +407,18 @@ const styles = StyleSheet.create({
   },
   money: {
     flex: 1,
-    position: 'absolute',
-    bottom: -50,
     color: '#446479',
     fontWeight: 'bold',
     },
-  diagonalLine: {
+    start: {
+      alignSelf: 'flex-start'
+    },
+    end: {
+      alignSelf: 'flex-end'
+    },
+      diagonalLine: {
     position: 'absolute',
-    bottom: -46,
+    bottom: -45,
     left: -8,
     backgroundColor: 'rgba(215,210,160, 0.0)',
     width: 80,
@@ -428,22 +427,39 @@ const styles = StyleSheet.create({
     borderColor: '#000',
     transform: [{ rotate: '-45deg' }],
   },
+  arrow: {
+    fontSize: 22,
+    transform: [{ rotate: '135deg' }],
+    position: 'absolute',
+    top: -1,
+    left: 7,
+  },
+  cone: {
+    width: 0,
+    height:0,
+    borderLeftWidth: 45,
+    borderLeftColor: 'transparent',
+    borderRightWidth: 44,
+    borderRightColor: 'transparent',
+    borderTopWidth: 101,
+    borderTopColor: 'rgba(215,210,160, 0.5)',
+    transform: [{ rotate: '-67.5deg' }],
+    position: 'absolute',
+    bottom: -19,
+    left: 25.5,
+    zIndex: 0,
+  },
   bottomLine: {
     display: 'flex',
     alignItems: 'center',
     borderBottomWidth: 2,
     borderColor: 'rgba(0,0,0,0.0)',
-    width: 260,
+    width: 235,
     paddingBottom: 10,
   },
   semiCircle: {
     flex: 10,
     backgroundColor: 'transparent',
-    color: '#d4af37',
-    fontSize: 60,
-    textShadowColor: 'rgba(8, 6, 3, 0.75)',
-    textShadowOffset: { width: -1, height: -1 },
-    textShadowRadius: 10,
     width: 220,
     height: 110,
     borderWidth: 7,
@@ -451,7 +467,7 @@ const styles = StyleSheet.create({
     borderColor: '#ffa07a',
     borderTopLeftRadius: 110,
     borderTopRightRadius: 110,
-    textAlign: 'center',
     alignItems: 'center',
+    zIndex: 1,
   },
 });
